@@ -1,0 +1,13 @@
+{
+    "KPackageStructure": "KWin/Script",
+    "KPlugin": {
+        "Id": "shitfuckzones",
+        "Name": "shitfuckzones",
+        "Description": "FancyZones-style window snapping with configurable layouts for KDE Plasma 6",
+        "Version": "1.0",
+        "License": "MIT",
+        "Category": "Tools"
+    },
+    "X-Plasma-API": "javascript",
+    "X-Plasma-MainScript": "code/main.js"
+}

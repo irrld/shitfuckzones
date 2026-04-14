@@ -1,0 +1,78 @@
+{
+    "active_layout": "my-grid",
+    "layouts": {
+        "my-grid": {
+            "zones": [
+                {"x": 0.0,    "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.0625, "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.125,  "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.1875, "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.25,   "y": 0.0, "width": 0.125,  "height": 0.5},
+                {"x": 0.375,  "y": 0.0, "width": 0.125,  "height": 0.5},
+                {"x": 0.5,    "y": 0.0, "width": 0.125,  "height": 0.5},
+                {"x": 0.625,  "y": 0.0, "width": 0.125,  "height": 0.5},
+                {"x": 0.75,   "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.8125, "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.875,  "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.9375, "y": 0.0, "width": 0.0625, "height": 0.5},
+                {"x": 0.0,    "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.0625, "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.125,  "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.1875, "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.25,   "y": 0.5, "width": 0.125,  "height": 0.5},
+                {"x": 0.375,  "y": 0.5, "width": 0.125,  "height": 0.5},
+                {"x": 0.5,    "y": 0.5, "width": 0.125,  "height": 0.5},
+                {"x": 0.625,  "y": 0.5, "width": 0.125,  "height": 0.5},
+                {"x": 0.75,   "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.8125, "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.875,  "y": 0.5, "width": 0.0625, "height": 0.5},
+                {"x": 0.9375, "y": 0.5, "width": 0.0625, "height": 0.5}
+            ]
+        },
+        "halves": {
+            "zones": [
+                {"x": 0, "y": 0, "width": 0.5, "height": 1.0},
+                {"x": 0.5, "y": 0, "width": 0.5, "height": 1.0}
+            ]
+        },
+        "thirds": {
+            "zones": [
+                {"x": 0, "y": 0, "width": 0.3333, "height": 1.0},
+                {"x": 0.3333, "y": 0, "width": 0.3334, "height": 1.0},
+                {"x": 0.6667, "y": 0, "width": 0.3333, "height": 1.0}
+            ]
+        },
+        "grid-2x2": {
+            "zones": [
+                {"x": 0, "y": 0, "width": 0.5, "height": 0.5},
+                {"x": 0.5, "y": 0, "width": 0.5, "height": 0.5},
+                {"x": 0, "y": 0.5, "width": 0.5, "height": 0.5},
+                {"x": 0.5, "y": 0.5, "width": 0.5, "height": 0.5}
+            ]
+        },
+        "main-side": {
+            "zones": [
+                {"x": 0, "y": 0, "width": 0.65, "height": 1.0},
+                {"x": 0.65, "y": 0, "width": 0.35, "height": 0.5},
+                {"x": 0.65, "y": 0.5, "width": 0.35, "height": 0.5}
+            ]
+        },
+        "priority-grid": {
+            "zones": [
+                {"x": 0, "y": 0, "width": 0.25, "height": 1.0},
+                {"x": 0.25, "y": 0, "width": 0.5, "height": 1.0},
+                {"x": 0.75, "y": 0, "width": 0.25, "height": 1.0}
+            ]
+        }
+    },
+    "appearance": {
+        "zone_color": "#4a90d9",
+        "zone_opacity": 0.25,
+        "zone_highlight_color": "#67b8ff",
+        "zone_highlight_opacity": 0.45,
+        "zone_border_color": "#2171b5",
+        "zone_border_width": 2,
+        "zone_gap": 4,
+        "zone_number_font_size": 16
+    }
+}
