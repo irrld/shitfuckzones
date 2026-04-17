@@ -72,7 +72,9 @@
         "zone_highlight_opacity": 0.45,
         "zone_border_color": "#2171b5",
         "zone_border_width": 2,
-        "zone_gap": 4,
-        "zone_number_font_size": 16
+        "zone_gap": 8,
+        "zone_border_radius": 12,
+        "zone_number_font_size": 22,
+        "zone_number_color": "#ffffff"
     }
 }

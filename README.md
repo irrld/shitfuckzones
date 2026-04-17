@@ -27,7 +27,7 @@ PowerToys FancyZones, but on Linux. That's it. That's the pitch.
 
 - KDE Plasma 6 (Wayland)
 - Python 3 with: `PyQt6`, `dbus-python`, `python-evdev`, `PyGObject`
-- User must be in the `input` group (`sudo usermod -aG input $USER`, then re-login)
+- Read access to `/dev/input/event*` — `install.sh` will prompt for `sudo` once to drop a udev rule (`TAG+="uaccess"`) that grants the active seat user ACL access, then apply it immediately with `udevadm trigger` + `setfacl`.
 
 ## Install
 

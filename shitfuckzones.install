@@ -1,0 +1,18 @@
+post_install() {
+    udevadm control --reload >/dev/null 2>&1 || true
+    udevadm trigger --subsystem-match=input --action=change >/dev/null 2>&1 || true
+    cat <<'EOF'
+==> shitfuckzones installed.
+==> Run `shitfuckzones` once to enable the KWin script and start the daemon.
+==> The default config will be copied to ~/.config/shitfuckzones/config.json — edit it to customize layouts.
+EOF
+}
+
+post_upgrade() {
+    udevadm control --reload >/dev/null 2>&1 || true
+    udevadm trigger --subsystem-match=input --action=change >/dev/null 2>&1 || true
+}
+
+post_remove() {
+    udevadm control --reload >/dev/null 2>&1 || true
+}

@@ -15,12 +15,16 @@ from evdev import ecodes
 
 from PyQt6.QtWidgets import QApplication, QWidget
 from PyQt6.QtCore import Qt, QObject, pyqtSignal, QRectF, QTimer
-from PyQt6.QtGui import QPainter, QColor, QPen
+from PyQt6.QtGui import QPainter, QColor, QPen, QFont
 
 
 def load_config():
-    config_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
-    with open(config_path) as f:
+    user_config = os.path.expanduser('~/.config/shitfuckzones/config.json')
+    if os.path.isfile(user_config):
+        path = user_config
+    else:
+        path = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.json')
+    with open(path) as f:
         config = json.load(f)
     active = config['active_layout']
     return config['layouts'][active]['zones'], config['appearance']
@@ -106,9 +110,11 @@ class OverlayWindow(QWidget):
 
     def paintEvent(self, event):
         painter = QPainter(self)
+        painter.setRenderHint(QPainter.RenderHint.Antialiasing)
         w, h = self.width(), self.height()
         gap = self.appearance['zone_gap']
         half_gap = gap / 2
+        radius = self.appearance.get('zone_border_radius', 0)
 
         zone_color = QColor(self.appearance['zone_color'])
         zone_color.setAlphaF(self.appearance['zone_opacity'])
@@ -121,6 +127,11 @@ class OverlayWindow(QWidget):
         pen = QPen(border_color, border_width)
         painter.setPen(pen)
 
+        font_size = self.appearance.get('zone_number_font_size', 16)
+        font = QFont()
+        font.setPixelSize(font_size)
+        font.setBold(True)
+
         for i, zone in enumerate(self.zones):
             rect = QRectF(
                 zone['x'] * w + half_gap,
@@ -128,8 +139,22 @@ class OverlayWindow(QWidget):
                 zone['width'] * w - gap,
                 zone['height'] * h - gap,
             )
-            painter.fillRect(rect, highlight_color if i in highlighted else zone_color)
-            painter.drawRect(rect)
+            fill = highlight_color if i in highlighted else zone_color
+            painter.setBrush(fill)
+            painter.drawRoundedRect(rect, radius, radius)
+
+        painter.setBrush(Qt.BrushStyle.NoBrush)
+        number_color = QColor(self.appearance.get('zone_number_color', '#ffffff'))
+        painter.setFont(font)
+        painter.setPen(QPen(number_color))
+        for i, zone in enumerate(self.zones):
+            rect = QRectF(
+                zone['x'] * w + half_gap,
+                zone['y'] * h + half_gap,
+                zone['width'] * w - gap,
+                zone['height'] * h - gap,
+            )
+            painter.drawText(rect, Qt.AlignmentFlag.AlignCenter, str(i + 1))
 
         painter.end()
 
@@ -237,7 +262,9 @@ def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     bus = dbus.SessionBus()
     bus_name = dbus.service.BusName('org.kde.shitfuckzones', bus,
-                                    replace_existing=True, do_not_queue=True)
+                                    allow_replacement=True,
+                                    replace_existing=True,
+                                    do_not_queue=True)
 
     monitor = KeyMonitor(bus_name, signals)
     monitor.start_monitoring()
